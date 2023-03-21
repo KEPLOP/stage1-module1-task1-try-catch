@@ -9,23 +9,19 @@ import java.util.List;
  * space delimiter
  */
 public class ParseIntegers {
-
-    private static final List<String> WORDS =
-            Arrays.asList(
-                    "JDK 17 has released on 14 September 2021 with 10 new features, 2 feature removals and 2 feature deprecations."
-                            .split(" "));
-
     public static void main(String[] args) {
-        Iterator<String> words = WORDS.iterator();
         int sum = 0;
-        String justWords = "";
-        while (words.hasNext()) {
-            String next = words.next();
-            int number = Integer.parseInt(next);
-            // todo: complete it
+        String str = "When a humble bard, graced right along, with Geralt of Rivia along came this song123";
+        String[] WORDS = str.split(" ");
+        for (String word : WORDS) {
+            for (int i = 0; i < word.length(); i++) {
+                char ch = word.charAt(i);
+                if (Character.isDigit(ch)) {
+                    int digit = Character.getNumericValue(ch);
+                    sum += digit;
+                }
+            }
         }
-        System.out.println("Sum is " + sum);
-        System.out.println("Just words:" + justWords);
+        System.out.println("Сумма цифр в строке " + "'" + str + "'" + " равна " + sum);
     }
 }
-
